@@ -16,5 +16,81 @@ import java.util.Objects;
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
 public abstract class Book {
+    private int numberOfPages;
+    private String name;
 
+    /**
+     * Constructor by default
+     */
+    public Book() {
+        numberOfPages = 0;
+        name = "";
+    }
+
+    /**
+     * Constructor with params
+     */
+    public Book(int numberOfPages, String name) {
+        this.numberOfPages = numberOfPages;
+        this.name = (name != null) ? name : "";
+    }
+
+    /**
+     * Get number of pages
+     */
+    public int getNumberOfPages() {
+        return numberOfPages;
+    }
+
+    /**
+     * Get book's name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set book's number of pages
+     */
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
+    }
+
+    /**
+     * Set book's name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Compare two book's objects by name and number of pages
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return numberOfPages == book.numberOfPages &&
+                Objects.equals(name, book.name);
+    }
+
+    /**
+     * Get book's object hash code calculated from name and number of pages
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberOfPages, name);
+    }
+
+    /**
+     *  Get string representing of book's object
+     */
+    @Override
+    public String toString() {
+        return "Book{" +
+                "numberOfPages=" + numberOfPages +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
